@@ -1,0 +1,22 @@
+# Build output
+llama.cpp/build/
+
+# Downloaded models
+models/
+
+# Server logs
+logs/
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.venv/
+venv/
+
+# Editor / OS
+.DS_Store
+*.swp
+*.swo
+.idea/
+.vscode/

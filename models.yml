@@ -1,0 +1,37 @@
+defaults:
+  models_dir: "${cwd}/models"
+  port: 8000
+  ctx_size: 32768
+  batch_size: 128
+  parallel: 1
+  # Thread tuning for i7-13700H (6 P-cores + 8 E-cores, 20 logical)
+  # threads:       generation (token-by-token) — P-cores only is optimal
+  # threads_batch: prefill/prompt processing — more cores help here
+  threads: 6
+  threads_batch: 14
+  cache_k: q4_0
+  cache_v: q4_0
+  flash_attn: true
+  kv_unified: true
+  jinja: true
+
+models:
+  nanbeige4.1_3B_q8:
+    path: "${models_dir}/experimental/Nanbeige4.1-3B.Q8_0.gguf"
+    inference: 
+      temperature: 0.6
+      top_p: 0.95
+      repeat_penalty: 1.1
+      max_new_tokens: 131072
+
+  qwen3_8B_q4:
+    path: "${models_dir}/experimental/Qwen3-8B-Q4_K_M.gguf"
+
+  Qwen3.5_0.8B_q8:
+    path: "${models_dir}/experimental/Qwen3.5-0.8B-Q8_0.gguf"
+
+  Qwen3.5_4B_q5:
+    path: "${models_dir}/experimental/Qwen3.5-4B-Q5_K_M.gguf"
+
+  Qwen3.5_4B_q8:
+    path: "${models_dir}/experimental/Qwen3.5-4B-Q8_0.gguf"
